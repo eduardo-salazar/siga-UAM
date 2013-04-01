@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{28556FCE-3917-4C3C-A8EF-8D88502A3EB7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Control_Aulas_UAM</RootNamespace>
+    <AssemblyName>Control Aulas UAM</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=10.9.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=10.9.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=10.9.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AsignacionClaseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AsignacionClaseControl.designer.cs">
+      <DependentUpon>AsignacionClaseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AsignacionMultipleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AsignacionMultipleForm.Designer.cs">
+      <DependentUpon>AsignacionMultipleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AsignacionVariosControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AsignacionVariosControl.designer.cs">
+      <DependentUpon>AsignacionVariosControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BuscarControl.Designer.cs">
+      <DependentUpon>BuscarControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarForm.Designer.cs">
+      <DependentUpon>BuscarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarGenerico.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BuscarGenerico.Designer.cs">
+      <DependentUpon>BuscarGenerico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarGenericoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarGenericoForm.Designer.cs">
+      <DependentUpon>BuscarGenericoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarGupoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BuscarGupoControl.Designer.cs">
+      <DependentUpon>BuscarGupoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CalendarControl.designer.cs">
+      <DependentUpon>CalendarControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\AsignacionMultipleControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AsignacionMultipleControl.designer.cs">
+      <DependentUpon>AsignacionMultipleControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\AsignaturaCategoriasForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AsignaturaCategoriasForm.Designer.cs">
+      <DependentUpon>AsignaturaCategoriasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\AsignaturasForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AsignaturasForm.Designer.cs">
+      <DependentUpon>AsignaturasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\AulasForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AulasForm.Designer.cs">
+      <DependentUpon>AulasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\AulaTipoUsoForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AulaTipoUsoForm.Designer.cs">
+      <DependentUpon>AulaTipoUsoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\AulaEstadosForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AulaEstadosForm.Designer.cs">
+      <DependentUpon>AulaEstadosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\AulaTipoForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AulaTipoForm.Designer.cs">
+      <DependentUpon>AulaTipoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\AlertaEstadosForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AlertaEstadosForm.Designer.cs">
+      <DependentUpon>AlertaEstadosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\EquiposForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogos\EquiposForm.Designer.cs">
+      <DependentUpon>EquiposForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\DocentesForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogos\DocentesForm.Designer.cs">
+      <DependentUpon>DocentesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\EdificiosForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogos\EdificiosForm.Designer.cs">
+      <DependentUpon>EdificiosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\FacultadForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogos\FacultadForm.Designer.cs">
+      <DependentUpon>FacultadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\GruposForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\GruposForm.Designer.cs">
+      <DependentUpon>GruposForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\NotificacionForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogos\NotificacionForm.Designer.cs">
+      <DependentUpon>NotificacionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\PeriodosForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Catalogos\PeriodosForm.Designer.cs">
+      <DependentUpon>PeriodosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\SyncAsignacionesClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\SyncAsignacionesClass.Designer.cs">
+      <DependentUpon>SyncAsignacionesClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\Asignacion.cs" />
+    <Compile Include="Clases\AsignacionClase.cs" />
+    <Compile Include="Clases\AsignacionVarios.cs" />
+    <Compile Include="Clases\Db\Alerta.cs" />
+    <Compile Include="Clases\Db\AlertaEstado.cs" />
+    <Compile Include="Clases\Db\AsignacionClass.cs" />
+    <Compile Include="Clases\Db\Asignatura.cs" />
+    <Compile Include="Clases\Db\AsignaturaCategoria.cs" />
+    <Compile Include="Clases\Db\Aula.cs" />
+    <Compile Include="Clases\Db\AulaEquipo.cs" />
+    <Compile Include="Clases\Db\AulaEstado.cs" />
+    <Compile Include="Clases\Db\AulaTipo.cs" />
+    <Compile Include="Clases\Db\AulaTipoUso.cs" />
+    <Compile Include="Clases\Db\Conexion.cs" />
+    <Compile Include="Clases\Db\Docente.cs" />
+    <Compile Include="Clases\Db\Edificio.cs" />
+    <Compile Include="Clases\Db\Equipo.cs" />
+    <Compile Include="Clases\Db\Facultad.cs" />
+    <Compile Include="Clases\Db\Grupo.cs" />
+    <Compile Include="Clases\Db\Periodo.cs" />
+    <Compile Include="Clases\Db\Serie.cs" />
+    <Compile Include="Clases\PeriodoTiempo.cs" />
+    <Compile Include="ControlNotificar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlNotificar.Designer.cs">
+      <DependentUpon>ControlNotificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlUsuario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlUsuario.designer.cs">
+      <DependentUpon>ControlUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditarSerieForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarSerieForm.Designer.cs">
+      <DependentUpon>EditarSerieForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EncryptPassphraseAlgorithm.cs" />
+    <Compile Include="Entorno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entorno.designer.cs">
+      <DependentUpon>Entorno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\Funciones.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoginControl.designer.cs">
+      <DependentUpon>LoginControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainCalendarViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainCalendarViewControl.designer.cs">
+      <DependentUpon>MainCalendarViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu-Principal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Menu-Principal.designer.cs">
+      <DependentUpon>Menu-Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NotificarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NotificarForm.Designer.cs">
+      <DependentUpon>NotificarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Clases\Usuario.cs" />
+    <EmbeddedResource Include="AsignacionClaseControl.resx">
+      <DependentUpon>AsignacionClaseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AsignacionMultipleForm.resx">
+      <DependentUpon>AsignacionMultipleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AsignacionVariosControl.resx">
+      <DependentUpon>AsignacionVariosControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarControl.resx">
+      <DependentUpon>BuscarControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarForm.resx">
+      <DependentUpon>BuscarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarGenerico.resx">
+      <DependentUpon>BuscarGenerico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarGenericoForm.resx">
+      <DependentUpon>BuscarGenericoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarGupoControl.resx">
+      <DependentUpon>BuscarGupoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalendarControl.resx">
+      <DependentUpon>CalendarControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\AsignacionMultipleControl.resx">
+      <DependentUpon>AsignacionMultipleControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\AsignaturaCategoriasForm.resx">
+      <DependentUpon>AsignaturaCategoriasForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\AsignaturasForm.resx">
+      <DependentUpon>AsignaturasForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\AulasForm.resx">
+      <DependentUpon>AulasForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\AulaTipoUsoForm.resx">
+      <DependentUpon>AulaTipoUsoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\AulaEstadosForm.resx">
+      <DependentUpon>AulaEstadosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\AulaTipoForm.resx">
+      <DependentUpon>AulaTipoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\AlertaEstadosForm.resx">
+      <DependentUpon>AlertaEstadosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\EquiposForm.resx">
+      <DependentUpon>EquiposForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\DocentesForm.resx">
+      <DependentUpon>DocentesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\EdificiosForm.resx">
+      <DependentUpon>EdificiosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\FacultadForm.resx">
+      <DependentUpon>FacultadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\GruposForm.resx">
+      <DependentUpon>GruposForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\NotificacionForm.resx">
+      <DependentUpon>NotificacionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\PeriodosForm.resx">
+      <DependentUpon>PeriodosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\SyncAsignacionesClass.resx">
+      <DependentUpon>SyncAsignacionesClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlNotificar.resx">
+      <DependentUpon>ControlNotificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlUsuario.resx">
+      <DependentUpon>ControlUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarSerieForm.resx">
+      <DependentUpon>EditarSerieForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entorno.resx">
+      <DependentUpon>Entorno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginControl.resx">
+      <DependentUpon>LoginControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainCalendarViewControl.resx">
+      <DependentUpon>MainCalendarViewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu-Principal.resx">
+      <DependentUpon>Menu-Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotificarForm.resx">
+      <DependentUpon>NotificarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UAM_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\form-background.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\form-background2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edtar48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\borrar48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancelar48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\linea48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nextEnd48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previousEnd48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuevo48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\realizarPago48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reportes48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alert.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alarm-Warning-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1356007982_communication.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1356008063_communication.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1356008196_communication.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1356008560_communication.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1357891266_Thumbs_Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1357891276_Thumbs_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
