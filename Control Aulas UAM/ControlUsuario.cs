@@ -71,7 +71,7 @@ namespace Control_Aulas_UAM
 
         private void edicion() {
             txtPassword.Enabled = true;
-            txtPassword.ReadOnly = false;
+            txtPassword.ReadOnly = true;
             txtNombre.ReadOnly = false;
             txtEmail.ReadOnly = false;
             txtTelefono.ReadOnly = false;

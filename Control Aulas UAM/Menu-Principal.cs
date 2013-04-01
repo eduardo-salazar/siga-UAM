@@ -29,6 +29,18 @@ namespace Control_Aulas_UAM
                 btnCrearSerie.Visible = true;
             }
             timer1_Tick(null, null);
+
+            //Evento de escucha click usuario para cambiar contraseña
+            this.labelNombre.Click += labelNombre_Click;
+        }
+
+        void labelNombre_Click(object sender, EventArgs e)
+        {
+            //Abrir formulario para cambiar contraseña
+            ChangePassword formPass = new ChangePassword(usuario);
+            formPass.StartPosition = FormStartPosition.CenterScreen;
+            formPass.ShowDialog();
+
         }
        
        protected override void OnResize(EventArgs e)

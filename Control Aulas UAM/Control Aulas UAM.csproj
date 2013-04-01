@@ -173,6 +173,12 @@
     <Compile Include="Catalogos\AlertaEstadosForm.Designer.cs">
       <DependentUpon>AlertaEstadosForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Catalogos\ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\ChangePassword.designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\EquiposForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -364,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Catalogos\AlertaEstadosForm.resx">
       <DependentUpon>AlertaEstadosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Catalogos\EquiposForm.resx">
       <DependentUpon>EquiposForm.cs</DependentUpon>
