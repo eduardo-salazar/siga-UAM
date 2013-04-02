@@ -311,8 +311,8 @@ namespace Control_Aulas_UAM
             {
                 MessageBox.Show("No se puede obtener notificaciones");
             }
-            if (cant != 0)
-            {
+            //if (cant != 0)
+            //{
                 this.lbCantidadNotificaciones.Visible = true;
                 this.lbCantidadNotificaciones.Text = cant.ToString();
                 int indice = 0;
@@ -324,11 +324,11 @@ namespace Control_Aulas_UAM
                         msg += ++indice+"."+a.Descripcion.Substring(0, 50) + "...\n";
                 }
                 balloonTip1.SetBalloonText(this.lbCantidadNotificaciones, msg);
-            }
-            else
-            {
-                this.lbCantidadNotificaciones.Visible = false;
-            }
+            //}
+            //else
+            //{
+            //    this.lbCantidadNotificaciones.Visible = false;
+            //}
 
         }
 

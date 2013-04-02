@@ -118,7 +118,7 @@ namespace Control_Aulas_UAM.Catalogos
             CalendarModel modelo = new CalendarModel();
 
             int cont = 0;//inicion del tiempo del calendario
-            int salto = 10;//Salto es de 10 segundo
+            int salto = 9;//Salto es de 10 segundo
 
             int verificar = 60 /salto;//salto en el que la hora cambia
             int temp = 0;
@@ -146,8 +146,8 @@ namespace Control_Aulas_UAM.Catalogos
                 String mensaje = "<font color=\"Blue\">" + a.FechaEvento + "</font><br />" +
                 "<font color=\"Green\">" + a.Descripcion + "</font><br />";
                 app.DisplayTemplate = "<font color=\"Blue\">" + a.FechaEvento.ToString("dddd, dd MMMM yyyy hh:mm tt") + "</font>";
-                if (temp == 4)
-                    cont++;
+                //if (temp == 4)
+                //    cont++;
                 app.StartTime = DateTime.Parse(Convert.ToString(cont)+":"+salto*temp);                
                 temp++;
                 app.Id = a.Id;
@@ -195,11 +195,19 @@ namespace Control_Aulas_UAM.Catalogos
         private void btnNotificar_Click(object sender, EventArgs e)
         {
             Conexion db = new Conexion();
-            int id=this.notificacionesView.SelectedAppointments[0].Appointment.Id;
-            Alerta a = notificaciones.Find(valor => valor.Id == id);
-            a.Realizada = !a.Realizada;
-            db.actualizarAlerta(a);
-            llenarNotificaciones();
+            try
+            {
+                int id = this.notificacionesView.SelectedAppointments[0].Appointment.Id;
+                Alerta a = notificaciones.Find(valor => valor.Id == id);
+                a.Realizada = !a.Realizada;
+                db.actualizarAlerta(a);
+                llenarNotificaciones();
+                this.NotificacionPanel.Expanded = false;
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)

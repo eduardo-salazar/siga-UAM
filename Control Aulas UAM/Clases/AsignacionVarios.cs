@@ -11,5 +11,6 @@ namespace Control_Aulas_UAM.Clases
     {
         public AulaTipoUso TipoUso { get; set; }
         public String Observaciones { get; set; }
+        public Cliente Cliente { get; set; }
     }
 }

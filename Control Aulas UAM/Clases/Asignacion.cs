@@ -56,5 +56,8 @@ namespace Control_Aulas_UAM.Clases
                     return null;
             }
         }
+
+        private int id_usuario;
+        public int Id_Usuario { get { return id_usuario; } set { id_usuario = value; } }
     }
 }

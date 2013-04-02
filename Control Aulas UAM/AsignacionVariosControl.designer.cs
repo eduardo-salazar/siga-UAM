@@ -48,6 +48,11 @@
             this.superValidator = new DevComponents.DotNetBar.Validator.SuperValidator();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.comboBoxCliente = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.customValidator_Cliente_Exists = new DevComponents.DotNetBar.Validator.CustomValidator();
+            this.labelCliente = new DevComponents.DotNetBar.LabelX();
+            this.buttonAdd = new DevComponents.DotNetBar.ButtonX();
+            this.buttonEdit = new DevComponents.DotNetBar.ButtonX();
             compareDateTimeFinValidator = new DevComponents.DotNetBar.Validator.CompareValidator();
             compareDateTimeInicioValidator = new DevComponents.DotNetBar.Validator.CompareValidator();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInputInicio)).BeginInit();
@@ -68,6 +73,8 @@
             // dateTimeInputInicio
             // 
             this.dateTimeInputInicio.AllowEmptyState = false;
+            this.dateTimeInputInicio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -116,7 +123,7 @@
             this.dateTimeInputInicio.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.dateTimeInputInicio.Name = "dateTimeInputInicio";
             this.dateTimeInputInicio.ShowUpDown = true;
-            this.dateTimeInputInicio.Size = new System.Drawing.Size(200, 22);
+            this.dateTimeInputInicio.Size = new System.Drawing.Size(195, 22);
             this.dateTimeInputInicio.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dateTimeInputInicio.TabIndex = 45;
             this.superValidator.SetValidator1(this.dateTimeInputInicio, compareDateTimeInicioValidator);
@@ -136,6 +143,8 @@
             // dateTimeInputFin
             // 
             this.dateTimeInputFin.AllowEmptyState = false;
+            this.dateTimeInputFin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -184,7 +193,7 @@
             this.dateTimeInputFin.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.dateTimeInputFin.Name = "dateTimeInputFin";
             this.dateTimeInputFin.ShowUpDown = true;
-            this.dateTimeInputFin.Size = new System.Drawing.Size(200, 22);
+            this.dateTimeInputFin.Size = new System.Drawing.Size(195, 22);
             this.dateTimeInputFin.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dateTimeInputFin.TabIndex = 47;
             this.superValidator.SetValidator1(this.dateTimeInputFin, compareDateTimeFinValidator);
@@ -193,6 +202,8 @@
             // 
             // comboBoxLugar
             // 
+            this.comboBoxLugar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxLugar.DisplayMember = "Text";
             this.comboBoxLugar.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxLugar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -201,7 +212,7 @@
             this.comboBoxLugar.ItemHeight = 16;
             this.comboBoxLugar.Location = new System.Drawing.Point(3, 252);
             this.comboBoxLugar.Name = "comboBoxLugar";
-            this.comboBoxLugar.Size = new System.Drawing.Size(200, 22);
+            this.comboBoxLugar.Size = new System.Drawing.Size(195, 22);
             this.comboBoxLugar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxLugar.TabIndex = 56;
             // 
@@ -234,6 +245,8 @@
             // 
             // textBoxDuracion
             // 
+            this.textBoxDuracion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
@@ -243,7 +256,7 @@
             this.textBoxDuracion.Location = new System.Drawing.Point(3, 195);
             this.textBoxDuracion.Name = "textBoxDuracion";
             this.textBoxDuracion.ReadOnly = true;
-            this.textBoxDuracion.Size = new System.Drawing.Size(200, 22);
+            this.textBoxDuracion.Size = new System.Drawing.Size(195, 22);
             this.textBoxDuracion.TabIndex = 53;
             this.textBoxDuracion.Text = "Invalido";
             // 
@@ -267,7 +280,7 @@
             // 
             this.labelObservaciones.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.labelObservaciones.Location = new System.Drawing.Point(3, 335);
+            this.labelObservaciones.Location = new System.Drawing.Point(3, 394);
             this.labelObservaciones.Name = "labelObservaciones";
             this.labelObservaciones.Size = new System.Drawing.Size(151, 23);
             this.labelObservaciones.TabIndex = 50;
@@ -314,6 +327,8 @@
             // 
             // comboBoxTipoUso
             // 
+            this.comboBoxTipoUso.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxTipoUso.DisplayMember = "Text";
             this.comboBoxTipoUso.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxTipoUso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -322,21 +337,23 @@
             this.comboBoxTipoUso.ItemHeight = 16;
             this.comboBoxTipoUso.Location = new System.Drawing.Point(3, 309);
             this.comboBoxTipoUso.Name = "comboBoxTipoUso";
-            this.comboBoxTipoUso.Size = new System.Drawing.Size(200, 22);
+            this.comboBoxTipoUso.Size = new System.Drawing.Size(195, 22);
             this.comboBoxTipoUso.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxTipoUso.TabIndex = 49;
             // 
             // textBoxObservaciones
             // 
+            this.textBoxObservaciones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
             this.textBoxObservaciones.Border.Class = "TextBoxBorder";
             this.textBoxObservaciones.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxObservaciones.Location = new System.Drawing.Point(3, 364);
+            this.textBoxObservaciones.Location = new System.Drawing.Point(3, 423);
             this.textBoxObservaciones.Multiline = true;
             this.textBoxObservaciones.Name = "textBoxObservaciones";
-            this.textBoxObservaciones.Size = new System.Drawing.Size(200, 129);
+            this.textBoxObservaciones.Size = new System.Drawing.Size(195, 129);
             this.textBoxObservaciones.TabIndex = 57;
             this.textBoxObservaciones.WatermarkText = "Observaciones";
             // 
@@ -357,10 +374,86 @@
             this.highlighter.ContainerControl = this;
             this.highlighter.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
             // 
+            // comboBoxCliente
+            // 
+            this.comboBoxCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxCliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxCliente.DisplayMember = "Text";
+            this.comboBoxCliente.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxCliente.DropDownWidth = 350;
+            this.comboBoxCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxCliente.FormattingEnabled = true;
+            this.comboBoxCliente.ItemHeight = 16;
+            this.comboBoxCliente.Location = new System.Drawing.Point(3, 366);
+            this.comboBoxCliente.Name = "comboBoxCliente";
+            this.comboBoxCliente.Size = new System.Drawing.Size(195, 22);
+            this.comboBoxCliente.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxCliente.TabIndex = 59;
+            this.superValidator.SetValidator1(this.comboBoxCliente, this.customValidator_Cliente_Exists);
+            this.comboBoxCliente.SelectedIndexChanged += new System.EventHandler(this.comboBoxCliente_SelectedIndexChanged);
+            this.comboBoxCliente.Leave += new System.EventHandler(this.comboBoxCliente_Leave);
+            // 
+            // customValidator_Cliente_Exists
+            // 
+            this.customValidator_Cliente_Exists.ErrorMessage = "Cliente invalido, para continuar agruegue los datos del cliente.";
+            this.customValidator_Cliente_Exists.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.customValidator_Cliente_Exists.ValidateValue += new DevComponents.DotNetBar.Validator.ValidateValueEventHandler(this.customValidator_Cliente_Valido_ValidateValue);
+            // 
+            // labelCliente
+            // 
+            // 
+            // 
+            // 
+            this.labelCliente.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labelCliente.Location = new System.Drawing.Point(3, 337);
+            this.labelCliente.Name = "labelCliente";
+            this.labelCliente.Size = new System.Drawing.Size(93, 23);
+            this.labelCliente.TabIndex = 58;
+            this.labelCliente.Text = "Cliente:";
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAdd.AntiAlias = true;
+            this.buttonAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.buttonAdd.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.buttonAdd.Image = ((System.Drawing.Image)(resources.GetObject("buttonAdd.Image")));
+            this.buttonAdd.ImageFixedSize = new System.Drawing.Size(15, 15);
+            this.buttonAdd.Location = new System.Drawing.Point(183, 345);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(15, 15);
+            this.buttonAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonAdd.TabIndex = 60;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonEdit.AntiAlias = true;
+            this.buttonEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.buttonEdit.Image = ((System.Drawing.Image)(resources.GetObject("buttonEdit.Image")));
+            this.buttonEdit.ImageFixedSize = new System.Drawing.Size(15, 15);
+            this.buttonEdit.Location = new System.Drawing.Point(162, 345);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(15, 15);
+            this.buttonEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonEdit.TabIndex = 61;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
             // AsignacionVariosControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.Controls.Add(this.buttonEdit);
+            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.comboBoxCliente);
+            this.Controls.Add(this.labelCliente);
             this.Controls.Add(this.textBoxObservaciones);
             this.Controls.Add(this.comboBoxLugar);
             this.Controls.Add(this.labelLugar);
@@ -375,7 +468,7 @@
             this.Controls.Add(this.dateTimeInputInicio);
             this.Controls.Add(this.labelInicio);
             this.Name = "AsignacionVariosControl";
-            this.Size = new System.Drawing.Size(219, 510);
+            this.Size = new System.Drawing.Size(219, 568);
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInputInicio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInputFin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
@@ -401,6 +494,11 @@
         private DevComponents.DotNetBar.Validator.Highlighter highlighter;
         public DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxLugar;
         public DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxTipoUso;
+        public DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxCliente;
+        private DevComponents.DotNetBar.LabelX labelCliente;
+        private DevComponents.DotNetBar.Validator.CustomValidator customValidator_Cliente_Exists;
+        private DevComponents.DotNetBar.ButtonX buttonAdd;
+        private DevComponents.DotNetBar.ButtonX buttonEdit;
 
     }
 }

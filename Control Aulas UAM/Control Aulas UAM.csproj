@@ -80,7 +80,7 @@
     <Compile Include="AsignacionMultipleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AsignacionMultipleForm.Designer.cs">
+    <Compile Include="AsignacionMultipleForm.designer.cs">
       <DependentUpon>AsignacionMultipleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AsignacionVariosControl.cs">
@@ -240,6 +240,7 @@
     <Compile Include="Clases\Db\AulaEstado.cs" />
     <Compile Include="Clases\Db\AulaTipo.cs" />
     <Compile Include="Clases\Db\AulaTipoUso.cs" />
+    <Compile Include="Clases\Db\Cliente.cs" />
     <Compile Include="Clases\Db\Conexion.cs" />
     <Compile Include="Clases\Db\Docente.cs" />
     <Compile Include="Clases\Db\Edificio.cs" />
@@ -280,6 +281,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCliente.designer.cs">
+      <DependentUpon>FormCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginControl.cs">
       <SubType>UserControl</SubType>
@@ -409,6 +416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Entorno.resx">
       <DependentUpon>Entorno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCliente.resx">
+      <DependentUpon>FormCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginControl.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>

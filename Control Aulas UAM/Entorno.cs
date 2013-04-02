@@ -165,6 +165,7 @@ namespace Control_Aulas_UAM
         {
             limpiarPanel();
             panel = new AsignacionMultipleControl();
+            ((AsignacionMultipleControl)panel).setUsuario(usuario);
             ajustarTamano(panel);
             this.Controls.Add(panel);
             seleccionar_tabControles();

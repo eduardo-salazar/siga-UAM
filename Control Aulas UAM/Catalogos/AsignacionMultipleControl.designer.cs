@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable superTabPanelColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable();
-            DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable superTabPanelItemColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable();
-            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
-            DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable superTabPanelItemColorTable3 = new DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable();
-            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable3 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable superTabPanelColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable superTabPanelItemColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
+            DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable superTabPanelItemColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable();
+            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AsignacionMultipleControl));
+            DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable superTabPanelColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable();
+            DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable superTabPanelItemColorTable3 = new DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable();
+            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable3 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AsignacionMultipleControl));
             this.dateTimeInput1 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelTiempo = new DevComponents.DotNetBar.LabelX();
             this.buttonAdd = new DevComponents.DotNetBar.ButtonX();
@@ -66,6 +66,10 @@
             this.superTabControlAsignacion = new DevComponents.DotNetBar.SuperTabControl();
             this.superTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.comboBoxCliente = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelCliente = new DevComponents.DotNetBar.LabelX();
+            this.buttonEdit = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.textBoxObservaciones = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelTipoUso = new DevComponents.DotNetBar.LabelX();
             this.labelObservaciones = new DevComponents.DotNetBar.LabelX();
@@ -93,6 +97,7 @@
             this.customValidatorDiasSeleccionados = new DevComponents.DotNetBar.Validator.CustomValidator();
             this.compareValidatorDateTimeInputFin = new DevComponents.DotNetBar.Validator.CompareValidator();
             this.customValidatorDateTimeInputFinRepeticiones = new DevComponents.DotNetBar.Validator.CustomValidator();
+            this.customValidator_Cliente_Exists = new DevComponents.DotNetBar.Validator.CustomValidator();
             this.customValidatorValidateGrupo = new DevComponents.DotNetBar.Validator.CustomValidator();
             this.customValidator_Asignatura_Exists = new DevComponents.DotNetBar.Validator.CustomValidator();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
@@ -597,8 +602,8 @@
             this.superTabControlAsignacion.ControlBox.MenuBox,
             this.superTabControlAsignacion.ControlBox.CloseBox});
             this.superTabControlAsignacion.ControlBox.Visible = false;
-            this.superTabControlAsignacion.Controls.Add(this.superTabControlPanelAsignacion);
             this.superTabControlAsignacion.Controls.Add(this.superTabControlPanel2);
+            this.superTabControlAsignacion.Controls.Add(this.superTabControlPanelAsignacion);
             this.superTabControlAsignacion.Location = new System.Drawing.Point(300, 87);
             this.superTabControlAsignacion.Name = "superTabControlAsignacion";
             this.superTabControlAsignacion.ReorderTabsEnabled = true;
@@ -618,17 +623,17 @@
             this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel2.Location = new System.Drawing.Point(0, 25);
             this.superTabControlPanel2.Name = "superTabControlPanel2";
+            superTabLinearGradientColorTable1.AdaptiveGradient = false;
+            superTabLinearGradientColorTable1.Colors = new System.Drawing.Color[] {
+        System.Drawing.SystemColors.Control};
+            superTabPanelItemColorTable1.Background = superTabLinearGradientColorTable1;
+            superTabPanelColorTable1.Bottom = superTabPanelItemColorTable1;
             superTabLinearGradientColorTable2.AdaptiveGradient = false;
             superTabLinearGradientColorTable2.Colors = new System.Drawing.Color[] {
         System.Drawing.SystemColors.Control};
             superTabPanelItemColorTable2.Background = superTabLinearGradientColorTable2;
-            superTabPanelColorTable2.Bottom = superTabPanelItemColorTable2;
-            superTabLinearGradientColorTable3.AdaptiveGradient = false;
-            superTabLinearGradientColorTable3.Colors = new System.Drawing.Color[] {
-        System.Drawing.SystemColors.Control};
-            superTabPanelItemColorTable3.Background = superTabLinearGradientColorTable3;
-            superTabPanelColorTable2.Default = superTabPanelItemColorTable3;
-            this.superTabControlPanel2.PanelColor = superTabPanelColorTable2;
+            superTabPanelColorTable1.Default = superTabPanelItemColorTable2;
+            this.superTabControlPanel2.PanelColor = superTabPanelColorTable1;
             this.superTabControlPanel2.Size = new System.Drawing.Size(298, 218);
             this.superTabControlPanel2.TabIndex = 0;
             this.superTabControlPanel2.TabItem = this.superTabItemOtro;
@@ -636,6 +641,10 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.panel2.Controls.Add(this.comboBoxCliente);
+            this.panel2.Controls.Add(this.labelCliente);
+            this.panel2.Controls.Add(this.buttonEdit);
+            this.panel2.Controls.Add(this.buttonX1);
             this.panel2.Controls.Add(this.textBoxObservaciones);
             this.panel2.Controls.Add(this.labelTipoUso);
             this.panel2.Controls.Add(this.labelObservaciones);
@@ -646,21 +655,83 @@
             this.panel2.Size = new System.Drawing.Size(298, 218);
             this.panel2.TabIndex = 49;
             // 
+            // comboBoxCliente
+            // 
+            this.comboBoxCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxCliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxCliente.DisplayMember = "Text";
+            this.comboBoxCliente.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxCliente.FormattingEnabled = true;
+            this.comboBoxCliente.ItemHeight = 14;
+            this.comboBoxCliente.Location = new System.Drawing.Point(84, 59);
+            this.comboBoxCliente.Name = "comboBoxCliente";
+            this.comboBoxCliente.Size = new System.Drawing.Size(156, 20);
+            this.comboBoxCliente.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxCliente.TabIndex = 67;
+            this.superValidator.SetValidator1(this.comboBoxCliente, this.customValidator_Cliente_Exists);
+            this.comboBoxCliente.SelectedIndexChanged += new System.EventHandler(this.comboBoxCliente_SelectedIndexChanged);
+            this.comboBoxCliente.Leave += new System.EventHandler(this.comboBoxCliente_Leave);
+            // 
+            // labelCliente
+            // 
+            // 
+            // 
+            // 
+            this.labelCliente.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelCliente.Location = new System.Drawing.Point(3, 59);
+            this.labelCliente.Name = "labelCliente";
+            this.labelCliente.Size = new System.Drawing.Size(72, 23);
+            this.labelCliente.TabIndex = 66;
+            this.labelCliente.Text = "Cliente:";
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonEdit.AntiAlias = true;
+            this.buttonEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.buttonEdit.Image = ((System.Drawing.Image)(resources.GetObject("buttonEdit.Image")));
+            this.buttonEdit.ImageFixedSize = new System.Drawing.Size(15, 15);
+            this.buttonEdit.Location = new System.Drawing.Point(241, 62);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(15, 15);
+            this.buttonEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonEdit.TabIndex = 65;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX1.AntiAlias = true;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange;
+            this.buttonX1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.buttonX1.Image = ((System.Drawing.Image)(resources.GetObject("buttonX1.Image")));
+            this.buttonX1.ImageFixedSize = new System.Drawing.Size(15, 15);
+            this.buttonX1.Location = new System.Drawing.Point(262, 62);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(15, 15);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.TabIndex = 64;
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
+            // 
             // textBoxObservaciones
             // 
             this.textBoxObservaciones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxObservaciones.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.textBoxObservaciones.BackColor = System.Drawing.SystemColors.HighlightText;
             // 
             // 
             // 
             this.textBoxObservaciones.Border.Class = "TextBoxBorder";
             this.textBoxObservaciones.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxObservaciones.ForeColor = System.Drawing.Color.Black;
-            this.textBoxObservaciones.Location = new System.Drawing.Point(3, 88);
+            this.textBoxObservaciones.Location = new System.Drawing.Point(3, 113);
             this.textBoxObservaciones.Multiline = true;
             this.textBoxObservaciones.Name = "textBoxObservaciones";
-            this.textBoxObservaciones.Size = new System.Drawing.Size(274, 107);
+            this.textBoxObservaciones.Size = new System.Drawing.Size(274, 79);
             this.textBoxObservaciones.TabIndex = 48;
             // 
             // labelTipoUso
@@ -681,7 +752,7 @@
             // 
             // 
             this.labelObservaciones.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelObservaciones.Location = new System.Drawing.Point(3, 59);
+            this.labelObservaciones.Location = new System.Drawing.Point(3, 84);
             this.labelObservaciones.Name = "labelObservaciones";
             this.labelObservaciones.Size = new System.Drawing.Size(202, 23);
             this.labelObservaciones.TabIndex = 47;
@@ -689,6 +760,8 @@
             // 
             // comboBoxTipoUso
             // 
+            this.comboBoxTipoUso.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxTipoUso.DisplayMember = "Text";
             this.comboBoxTipoUso.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxTipoUso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -696,7 +769,7 @@
             this.comboBoxTipoUso.ItemHeight = 14;
             this.comboBoxTipoUso.Location = new System.Drawing.Point(84, 33);
             this.comboBoxTipoUso.Name = "comboBoxTipoUso";
-            this.comboBoxTipoUso.Size = new System.Drawing.Size(121, 20);
+            this.comboBoxTipoUso.Size = new System.Drawing.Size(193, 20);
             this.comboBoxTipoUso.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxTipoUso.TabIndex = 44;
             // 
@@ -713,11 +786,11 @@
             this.superTabControlPanelAsignacion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanelAsignacion.Location = new System.Drawing.Point(0, 25);
             this.superTabControlPanelAsignacion.Name = "superTabControlPanelAsignacion";
-            superTabLinearGradientColorTable1.Colors = new System.Drawing.Color[] {
+            superTabLinearGradientColorTable3.Colors = new System.Drawing.Color[] {
         System.Drawing.SystemColors.Control};
-            superTabPanelItemColorTable1.Background = superTabLinearGradientColorTable1;
-            superTabPanelColorTable1.Default = superTabPanelItemColorTable1;
-            this.superTabControlPanelAsignacion.PanelColor = superTabPanelColorTable1;
+            superTabPanelItemColorTable3.Background = superTabLinearGradientColorTable3;
+            superTabPanelColorTable2.Default = superTabPanelItemColorTable3;
+            this.superTabControlPanelAsignacion.PanelColor = superTabPanelColorTable2;
             this.superTabControlPanelAsignacion.Size = new System.Drawing.Size(298, 218);
             this.superTabControlPanelAsignacion.TabIndex = 1;
             this.superTabControlPanelAsignacion.TabItem = this.superTabItemClase;
@@ -1041,6 +1114,12 @@
             this.customValidatorDateTimeInputFinRepeticiones.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             this.customValidatorDateTimeInputFinRepeticiones.ValidateValue += new DevComponents.DotNetBar.Validator.ValidateValueEventHandler(this.customValidatorDateValid_ValidateValue);
             // 
+            // customValidator_Cliente_Exists
+            // 
+            this.customValidator_Cliente_Exists.ErrorMessage = "Cliente invalido, para continuar agruegue los datos del cliente.";
+            this.customValidator_Cliente_Exists.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.customValidator_Cliente_Exists.ValidateValue += new DevComponents.DotNetBar.Validator.ValidateValueEventHandler(this.customValidator_Cliente_Valido_ValidateValue);
+            // 
             // customValidatorValidateGrupo
             // 
             this.customValidatorValidateGrupo.ErrorMessage = "Es requerido seleccionar un grupo";
@@ -1233,5 +1312,10 @@
         private DevComponents.DotNetBar.Validator.CustomValidator customValidator_Asignatura_Exists;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxDocente;
+        private DevComponents.DotNetBar.LabelX labelCliente;
+        private DevComponents.DotNetBar.ButtonX buttonEdit;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxCliente;
+        private DevComponents.DotNetBar.Validator.CustomValidator customValidator_Cliente_Exists;
     }
 }

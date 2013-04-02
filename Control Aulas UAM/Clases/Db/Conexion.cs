@@ -2105,6 +2105,15 @@ namespace Control_Aulas_UAM.Clases
                         }
                     }
                     asig.Serie = serie;
+                    String id_cliente = dataReader["id_cliente"].ToString();
+                    if (id_cliente != null ? id_cliente.Length > 0 : false)
+                    {
+                        Cliente cliente = new Cliente();
+                        cliente.Id = Convert.ToInt32(id_cliente);
+                        cliente.Nombre = dataReader["nombre_cliente"].ToString();
+                        cliente.Area = dataReader["area_cliente"].ToString();
+                        asig.Cliente = cliente;
+                    }
                     Aulas.Add(asig);
                 }
                 return Aulas;
@@ -2207,21 +2216,30 @@ namespace Control_Aulas_UAM.Clases
                 if (Asignacion is AsignacionClase)
                 {
                     AsignacionClase asig = (AsignacionClase)Asignacion;
-                    this.command.CommandText = "insert into asignacion_clase(id_aula,id_grupo,inicio,fin,serie,reprogramada) values(@id_aula,@id_grupo,@inicio,@fin,@serie,@reprogramada);" + "SELECT CAST(scope_identity() AS int)";
+                    this.command.CommandText = "insert into asignacion_clase(id_aula,id_grupo,inicio,fin,serie,reprogramada,usuario_emisor) values(@id_aula,@id_grupo,@inicio,@fin,@serie,@reprogramada,@usuario_emisor);" + "SELECT CAST(scope_identity() AS int)";
                     this.command.Parameters.Add(new SqlParameter("@id_aula", DbType.Int32));
                     this.command.Parameters.Add(new SqlParameter("@id_grupo", DbType.Int32));
                     this.command.Parameters.Add(new SqlParameter("@inicio", DbType.DateTime));
                     this.command.Parameters.Add(new SqlParameter("@fin", DbType.DateTime));
                     this.command.Parameters.Add(new SqlParameter("@reprogramada", DbType.Boolean));
+                    this.command.Parameters.Add(new SqlParameter("@usuario_emisor", DbType.String));
 
                     this.command.Parameters["@id_aula"].Value = asig.Aula.Id;
                     this.command.Parameters["@id_grupo"].Value = asig.Grupo.Id;
                     this.command.Parameters["@inicio"].Value = asig.Inicio;
                     this.command.Parameters["@fin"].Value = asig.Fin;
                     this.command.Parameters["@reprogramada"].Value = asig.Reprogramada;
+                    
+                    if (asig.Id_Usuario > 0)
+                    {
+                        this.command.Parameters["@usuario_emisor"].Value = asig.Id_Usuario;
+                    }
+                    else {
+                        this.command.Parameters["@usuario_emisor"].Value = DBNull.Value;
+                    }
 
                     this.command.Parameters.Add(new SqlParameter("@serie", DbType.Int32));
-                    if (Asignacion.Serie != null)
+                    if (Asignacion.Serie != null ? Asignacion.Serie.ID>0:false)
                     {
                         this.command.Parameters["@serie"].Value = Asignacion.Serie.ID;
                     }
@@ -2233,12 +2251,13 @@ namespace Control_Aulas_UAM.Clases
                 else
                 {
                     AsignacionVarios asig = (AsignacionVarios)Asignacion;
-                    this.command.CommandText = "insert into asignacion_varios(id_aula,inicio,fin,id_tipo_uso,observaciones,serie) values(@id_aula,@inicio,@fin,@id_tipo_uso,@observaciones,@serie);" + "SELECT CAST(scope_identity() AS int)";
+                    this.command.CommandText = "insert into asignacion_varios(id_aula,inicio,fin,id_tipo_uso,observaciones,serie,id_cliente,usuario_emisor) values(@id_aula,@inicio,@fin,@id_tipo_uso,@observaciones,@serie, @id_cliente,@usuario_emisor);" + "SELECT CAST(scope_identity() AS int)";
                     this.command.Parameters.Add(new SqlParameter("@id_aula", DbType.Int32));
                     this.command.Parameters.Add(new SqlParameter("@inicio", DbType.DateTime));
                     this.command.Parameters.Add(new SqlParameter("@fin", DbType.DateTime));
                     this.command.Parameters.Add(new SqlParameter("@id_tipo_uso", DbType.Int32));
                     this.command.Parameters.Add(new SqlParameter("@observaciones", DbType.String));
+                    this.command.Parameters.Add(new SqlParameter("@usuario_emisor", DbType.String));
 
                     this.command.Parameters["@id_aula"].Value = asig.Aula.Id;
                     this.command.Parameters["@inicio"].Value = asig.Inicio;
@@ -2246,14 +2265,32 @@ namespace Control_Aulas_UAM.Clases
                     this.command.Parameters["@id_tipo_uso"].Value = asig.TipoUso.Id;
                     this.command.Parameters["@observaciones"].Value = asig.Observaciones;
 
+                    if ( asig.Id_Usuario > 0)
+                    {
+                        this.command.Parameters["@usuario_emisor"].Value = asig.Id_Usuario;
+                    }
+                    else
+                    {
+                        this.command.Parameters["@usuario_emisor"].Value = DBNull.Value;
+                    }
+
                     this.command.Parameters.Add(new SqlParameter("@serie", DbType.Int32));
-                    if (asig.Serie != null)
+                    if (asig.Serie != null ? Asignacion.Serie.ID > 0 : false)
                     {
                         this.command.Parameters["@serie"].Value = asig.Serie.ID;
                     }
                     else
                     {
                         this.command.Parameters["@serie"].Value = DBNull.Value;
+                    }
+                    this.command.Parameters.Add(new SqlParameter("@id_cliente", DbType.Int32));
+                    if (asig.Cliente != null ? asig.Cliente.Id > 0 : false)
+                    {
+                        this.command.Parameters["@id_cliente"].Value = asig.Cliente.Id;
+                    }
+                    else
+                    {
+                        this.command.Parameters["@id_cliente"].Value = DBNull.Value;
                     }
                 }
                 this.lastUpdated = this.command.ExecuteScalar().ToString();
@@ -2293,13 +2330,14 @@ namespace Control_Aulas_UAM.Clases
                 if (Asignacion is AsignacionClase)
                 {
                     AsignacionClase asig = (AsignacionClase)Asignacion;
-                    this.command.CommandText = "update asignacion_clase set id_aula=@id_aula,id_grupo=@id_grupo,inicio=@inicio,fin=@fin, reprogramada=@reprogramada, serie=@serie where id_asignacion=@id;";
+                    this.command.CommandText = "update asignacion_varios set id_aula=@id_aula,inicio=@inicio,fin=@fin,id_tipo_uso=@id_tipo_uso,observaciones=@observaciones, serie=@serie, id_cliente=@id_cliente, usuario_emisor=@usuario_emisor where id_asignacion=@id;";
                     this.command.Parameters.Add(new SqlParameter("@id_aula", DbType.Int32));
                     this.command.Parameters.Add(new SqlParameter("@id_grupo", DbType.Int32));
                     this.command.Parameters.Add(new SqlParameter("@inicio", DbType.DateTime));
                     this.command.Parameters.Add(new SqlParameter("@fin", DbType.DateTime));
                     this.command.Parameters.Add(new SqlParameter("@id", DbType.Int32));
                     this.command.Parameters.Add(new SqlParameter("@reprogramada", DbType.Binary));
+                    this.command.Parameters.Add(new SqlParameter("@usuario_emisor", DbType.String));
 
                     this.command.Parameters["@id_aula"].Value = asig.Aula.Id;
                     this.command.Parameters["@id_grupo"].Value = asig.Grupo.Id;
@@ -2307,6 +2345,15 @@ namespace Control_Aulas_UAM.Clases
                     this.command.Parameters["@fin"].Value = asig.Fin;
                     this.command.Parameters["@id"].Value = asig.ID;
                     this.command.Parameters["@reprogramada"].Value = asig.Reprogramada;
+
+                    if ( asig.Id_Usuario > 0 )
+                    {
+                        this.command.Parameters["@usuario_emisor"].Value = asig.Id_Usuario;
+                    }
+                    else
+                    {
+                        this.command.Parameters["@usuario_emisor"].Value = DBNull.Value;
+                    }
 
                     this.command.Parameters.Add(new SqlParameter("@serie", DbType.Int32));
                     if (asig.Serie != null)
@@ -2322,7 +2369,7 @@ namespace Control_Aulas_UAM.Clases
                 else
                 {
                     AsignacionVarios asig = (AsignacionVarios)Asignacion;
-                    this.command.CommandText = "update asignacion_varios set id_aula=@id_aula,inicio=@inicio,fin=@fin,id_tipo_uso=@id_tipo_uso,observaciones=@observaciones, serie=@serie where id_asignacion=@id;";
+                    this.command.CommandText = "update asignacion_varios set id_aula=@id_aula,inicio=@inicio,fin=@fin,id_tipo_uso=@id_tipo_uso,observaciones=@observaciones, serie=@serie, id_cliente=@id_cliente, usuario_emisor=@usuario_emisor where id_asignacion=@id;";
                     this.command.Parameters.Add(new SqlParameter("@id_aula", DbType.Int32));
                     this.command.Parameters.Add(new SqlParameter("@inicio", DbType.DateTime));
                     this.command.Parameters.Add(new SqlParameter("@fin", DbType.DateTime));
@@ -2335,8 +2382,11 @@ namespace Control_Aulas_UAM.Clases
                     this.command.Parameters["@id_tipo_uso"].Value = asig.TipoUso.Id;
                     this.command.Parameters["@observaciones"].Value = asig.Observaciones;
                     this.command.Parameters["@id"].Value = asig.ID;
+                    this.command.Parameters.Add(new SqlParameter("@usuario_emisor", DbType.String));
 
                     this.command.Parameters.Add(new SqlParameter("@serie", DbType.Int32));
+
+
                     if (asig.Serie != null)
                     {
                         this.command.Parameters["@serie"].Value = asig.Serie.ID;
@@ -2346,6 +2396,22 @@ namespace Control_Aulas_UAM.Clases
                         this.command.Parameters["@serie"].Value = DBNull.Value;
                     }
 
+                    if ( asig.Id_Usuario > 0 )
+                    {
+                        this.command.Parameters["@usuario_emisor"].Value = asig.Id_Usuario;
+                    }
+                    else
+                    {
+                        this.command.Parameters["@usuario_emisor"].Value = DBNull.Value;
+                    }
+                    this.command.Parameters.Add(new SqlParameter("@id_cliente", DbType.Int32));
+                    if (asig.Cliente != null ? asig.Cliente.Id > 0 : false)
+                    {
+                        this.command.Parameters["@id_cliente"].Value = asig.Cliente.Id;
+                    }
+                    else{
+                        this.command.Parameters["@id_cliente"].Value = DBNull.Value;
+                    }
                 }
                 this.command.ExecuteNonQuery();
                 this.transaction.Commit();
@@ -2922,7 +2988,6 @@ namespace Control_Aulas_UAM.Clases
                     asig.TipoUso.Id = Convert.ToInt32(dataReader["tipoUsoId"].ToString());
                     asig.TipoUso.Descripcion = dataReader["tipoUsoDescripcion"].ToString();
                     asig.Observaciones = dataReader["observaciones"].ToString();
-
                     Serie serie = null;
                     String s = dataReader["serie"].ToString();
                     if (s != null)
@@ -2935,6 +3000,15 @@ namespace Control_Aulas_UAM.Clases
                         }
                     }
                     asig.Serie = serie;
+                    String id_cliente = dataReader["id_cliente"].ToString();
+                    if (id_cliente != null ? id_cliente.Length>0:false)
+                    {
+                        Cliente cliente = new Cliente();
+                        cliente.Id = Convert.ToInt32(id_cliente);
+                        cliente.Nombre = dataReader["nombre_cliente"].ToString();
+                        cliente.Area = dataReader["area_cliente"].ToString();
+                        asig.Cliente = cliente;
+                    }
                     AsignacionesVarios.Add(asig);
                 }
                 return AsignacionesVarios;
@@ -3881,6 +3955,209 @@ namespace Control_Aulas_UAM.Clases
             {
                 this.connection.Close();
             }
+        }
+        /*--------------------Catalogo de Clientes-------------------------*/
+
+        public List<Cliente> getClientes()
+        {
+            SqlDataReader dataReader = null;
+            List<Cliente> clientes = new List<Cliente>();
+            try
+            {
+                string query = "Select * from cliente";
+                command = new SqlCommand(query, connection);
+                command.Connection.Open();
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    int id = Convert.ToInt32(dataReader["id_cliente"].ToString());
+                    String nombre = dataReader["nombre"].ToString();
+                    String area = dataReader["area"].ToString();
+                    Cliente cliente = new Cliente();
+                    cliente.Id = id;
+                    cliente.Nombre = nombre;
+                    cliente.Area = area;
+                    cliente.IsDocente = false;
+                    clientes.Add(cliente);
+                }
+                dataReader.Close();
+                /*query = "Select * from docente";
+                command = new SqlCommand(query, connection);
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    int id = Convert.ToInt32(dataReader["id_docente"].ToString());
+                    String nombre = dataReader["nombre"].ToString();
+                    String area = "Academica";
+                    Cliente cliente = new Cliente();
+                    cliente.Id = id;
+                    cliente.Nombre = nombre;
+                    cliente.Area = area;
+                    cliente.IsDocente = true;
+                    clientes.Add(cliente);
+                }*/
+                return clientes;
+            }
+            catch (Exception e)
+            {
+                return null;
+                //throw new Exception("Error al obtener datos de Usuario. " + e.Message.ToString());
+            }
+            finally
+            {
+                command.Connection.Close();
+            }
+        }
+
+        public int cantClientes()
+        {
+            int cantidad;
+            try
+            {
+                string query = "Select count(*) from clientes";
+                command = new SqlCommand(query, connection);
+                command.Connection.Open();
+                cantidad = (Int32)command.ExecuteScalar();
+                return cantidad;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al obtener datos de Usuario. " + e.Message.ToString());
+            }
+            finally
+            {
+                command.Connection.Close();
+            }
+        }
+
+        public Boolean insertCliente(ref Cliente cliente)
+        {
+            bool inserted = false;
+            if (!cliente.IsDocente)
+            {
+                this.connection.Open();
+                this.command = this.connection.CreateCommand();
+                this.transaction = this.connection.BeginTransaction();
+                this.command.Connection = this.connection;
+                this.command.Transaction = this.transaction;
+
+                try
+                {
+                    this.command.CommandText = "insert into cliente(nombre,area) values(@nombre,@area);" + "SELECT CAST(scope_identity() AS int)";
+                    this.command.Parameters.Add(new SqlParameter("@nombre", SqlDbType.NVarChar, 50));
+                    this.command.Parameters.Add(new SqlParameter("@area", SqlDbType.NVarChar, 50));
+
+                    this.command.Parameters["@nombre"].Value = cliente.Nombre;
+                    this.command.Parameters["@area"].Value = cliente.Area;
+                    this.lastUpdated = this.command.ExecuteScalar().ToString();
+                    cliente.Id = Convert.ToInt32(lastUpdated);
+                    this.transaction.Commit();
+                    inserted = true;
+                }
+                catch (Exception e)
+                {
+                    try
+                    {
+                        transaction.Rollback();
+                        //throw new Exception("Error al insertar registro. " + e.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Error al roolback accion. " + ex.Message);
+                    }
+                }
+                finally
+                {
+                    this.connection.Close();
+                }
+            }
+            return inserted;
+        }
+
+        public Boolean actualizarCliente(Cliente cliente)
+        {
+            bool updated = false;
+            if (!cliente.IsDocente)
+            {
+                this.connection.Open();
+                this.command = this.connection.CreateCommand();
+                this.transaction = this.connection.BeginTransaction();
+                this.command.Connection = this.connection;
+                this.command.Transaction = this.transaction;
+
+                try
+                {
+                    this.command.CommandText = "Update cliente set nombre=@nombre,area=@area where id_cliente=@id;";
+                    this.command.Parameters.Add(new SqlParameter("@nombre", SqlDbType.NVarChar, 50));
+                    this.command.Parameters.Add(new SqlParameter("@id", SqlDbType.Int));
+                    this.command.Parameters.Add(new SqlParameter("@area", SqlDbType.NVarChar, 50));
+                    this.command.Parameters["@nombre"].Value = cliente.Nombre;
+                    this.command.Parameters["@area"].Value = cliente.Area;
+                    this.command.Parameters["@id"].Value = cliente.Id;
+                    this.command.ExecuteNonQuery();
+                    this.transaction.Commit();
+                    updated = true;
+                }
+                catch (Exception e)
+                {
+                    try
+                    {
+                        this.transaction.Rollback();
+                        //throw new Exception("Error al Actualizar." + e.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        //throw new Exception("Error al rollback accion." + ex.Message);
+                    }
+                }
+                finally
+                {
+                    this.connection.Close();
+                }
+            }
+            return updated;
+        }
+
+        public Boolean borrarCliente(Cliente cliente)
+        {
+            bool deleted = false;
+            if (!cliente.IsDocente)
+            {
+                this.connection.Open();
+                this.command = this.connection.CreateCommand();
+                this.transaction = this.connection.BeginTransaction();
+
+                this.command.Connection = this.connection;
+                this.command.Transaction = this.transaction;
+
+                try
+                {
+                    this.command.CommandText = "delete from cliente where id_cliente=@id;";
+                    this.command.Parameters.Add(new SqlParameter("@id", SqlDbType.Int));
+                    this.command.Parameters["@id"].Value = cliente.Id;
+                    this.command.ExecuteNonQuery();
+                    this.transaction.Commit();
+                    deleted = true;
+                }
+                catch (Exception e)
+                {
+                    try
+                    {
+                        this.transaction.Rollback();
+                        //throw new Exception("Error al borrar registro. " + e.Message);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        //throw new Exception("Error al rollback acción. " + ex.Message);
+                    }
+                }
+                finally
+                {
+                    this.connection.Close();
+                }
+            }
+            return deleted;
         }
         
     }

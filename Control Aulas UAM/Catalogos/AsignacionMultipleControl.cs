@@ -15,10 +15,10 @@ using Control_Aulas_UAM.Clases.Db;
 
 namespace Control_Aulas_UAM
 {
-    public partial class AsignacionMultipleControl : UserControl,Funciones
+    public partial class AsignacionMultipleControl : UserControl, Funciones
     {
         DevComponents.DotNetBar.Controls.CheckBoxX[] checkBoxGroup;
-        public List<Asignacion> Asignaciones { get { return asignaciones.ToList<Asignacion>(); }  }
+        public List<Asignacion> Asignaciones { get { return asignaciones.ToList<Asignacion>(); } }
         public List<Serie> Series { get { return series; } }
         SortableBindingList<Asignacion> asignaciones;
         List<Asignatura> asignaturas;
@@ -26,36 +26,58 @@ namespace Control_Aulas_UAM
         List<Aula> aulas;
         List<PeriodoTiempo> fechas;
         List<Serie> series;
+        List<Cliente> clientes;
         Conexion conexion;
+        Usuario usuario;
 
         public AsignacionMultipleControl()
         {
             InitializeComponent();
-            checkBoxGroup = new DevComponents.DotNetBar.Controls.CheckBoxX[7];
-            checkBoxGroup[0] = checkBoxDomingo;
-            checkBoxGroup[1] = checkBoxLunes;
-            checkBoxGroup[2] = checkBoxMartes;
-            checkBoxGroup[3] = checkBoxMiercoles;
-            checkBoxGroup[4] = checkBoxJueves;
-            checkBoxGroup[5] = checkBoxViernes;
-            checkBoxGroup[6] = checkBoxSabado;
-            Clear();
-            this.customValidatorValidateGrupo.ValidateValue+=customValidatorValidateGrupo_ValidateValue;
-            superValidator.Validate();
-        }
-
-        public void Clear() {
             try
             {
-            comboBoxAsignacion.SelectedIndex = 0;
-            radioButtonRepeticiones.Checked = true;
-            checkBoxRepetir.Checked = false;
-            asignaciones = new SortableBindingList<Asignacion>();
-            //fechas = new SortableBindingList<PeriodoTiempo>();
-            //dataGridViewFechas.DataSource = fechas;
-            dataGridViewFechas.AutoGenerateColumns = false;
-            dataGridViewFechas.DataSource = asignaciones;
-            series = new List<Serie>();
+                checkBoxGroup = new DevComponents.DotNetBar.Controls.CheckBoxX[7];
+                checkBoxGroup[0] = checkBoxDomingo;
+                checkBoxGroup[1] = checkBoxLunes;
+                checkBoxGroup[2] = checkBoxMartes;
+                checkBoxGroup[3] = checkBoxMiercoles;
+                checkBoxGroup[4] = checkBoxJueves;
+                checkBoxGroup[5] = checkBoxViernes;
+                checkBoxGroup[6] = checkBoxSabado;
+                Clear();
+                loadClientes();
+                this.customValidatorValidateGrupo.ValidateValue += customValidatorValidateGrupo_ValidateValue;
+                superValidator.Validate();
+            }catch(Exception e){}
+        }
+
+        public void setUsuario(Usuario usuario) {
+            this.usuario = usuario;
+        }
+
+        void loadClientes() {
+            Cliente empty = new Cliente();
+            clientes = new List<Cliente>();
+            clientes.Add(empty);
+            List<Cliente> clientesT = conexion.getClientes();
+            if (clientesT != null)
+            {
+                clientes.AddRange(clientesT);
+            }
+            comboBoxCliente.DataSource = clientes;
+            comboBoxCliente.DisplayMember = "NombreCompleto";
+        }
+
+        public void Clear()
+        {
+            try
+            {
+                comboBoxAsignacion.SelectedIndex = 0;
+                radioButtonRepeticiones.Checked = true;
+                checkBoxRepetir.Checked = false;
+                asignaciones = new SortableBindingList<Asignacion>();
+                dataGridViewFechas.AutoGenerateColumns = false;
+                dataGridViewFechas.DataSource = asignaciones;
+                series = new List<Serie>();
                 conexion = new Conexion();
                 if (asignaturas == null)
                 {
@@ -72,23 +94,23 @@ namespace Control_Aulas_UAM
                 comboBoxAula.DisplayMember = "referencia";
                 comboBoxAula.ValueMember = "Id";
                 comboBoxAula.AutoCompleteSource = AutoCompleteSource.ListItems;
-                DateTime now=DateTime.Now;
+                DateTime now = DateTime.Now;
                 DateTime inicialDate = new DateTime(now.Year, now.Month, now.Day, 8, 0, 0);
-                setInitialDates(inicialDate,inicialDate.AddHours(2));
+                setInitialDates(inicialDate, inicialDate.AddHours(2));
             }
             catch { }
         }
 
         private void dateTimeInput_ValueChanged(object sender, EventArgs e)
         {
-            DateTime inicio=dateTimeInputInicio.Value;
-            DateTime fin=dateTimeInputFin.Value;
-            if (DateTime.Compare(inicio,fin)==-1)
+            DateTime inicio = dateTimeInputInicio.Value;
+            DateTime fin = dateTimeInputFin.Value;
+            if (DateTime.Compare(inicio, fin) == -1)
             {
-                TimeSpan offset = fin.Subtract(inicio) ;
-                String text="Duración: ";
+                TimeSpan offset = fin.Subtract(inicio);
+                String text = "Duración: ";
                 if (offset.Days > 0)
-                    text += offset.Days+" dias ";
+                    text += offset.Days + " dias ";
                 if (offset.Hours > 0)
                     text += offset.Hours + " horas ";
                 if (offset.Minutes > 0)
@@ -99,7 +121,8 @@ namespace Control_Aulas_UAM
                 fin = inicio.AddHours(1);
                 dateTimeInputFin.Value = fin;
             }*/
-            if (dateTimeInputFinRepeticiones.Value<fin) {
+            if (dateTimeInputFinRepeticiones.Value < fin)
+            {
                 dateTimeInputFinRepeticiones.Value = fin.AddMinutes(1);
             }
             superValidator.Validate();
@@ -120,7 +143,8 @@ namespace Control_Aulas_UAM
                             DateTime currentDateTime = inicio;
                             int i = 0;
                             Serie serie = null;
-                            if (checkBoxAgruparSerie.Checked) {
+                            if (checkBoxAgruparSerie.Checked)
+                            {
                                 serie = new Serie();
                                 serie.Descripcion = textBoxTituloSerie.Text;
                                 series.Add(serie);
@@ -132,14 +156,15 @@ namespace Control_Aulas_UAM
                                 if (checkBoxGroup[currentDay].Checked)
                                 {
                                     Asignacion asignacion = createAsignacion();
-                                    asignacion.Inicio=currentDateTime;
-                                    asignacion.Fin=fin.AddDays(currentDateTime.Subtract(inicio).Days);
+                                    asignacion.Inicio = currentDateTime;
+                                    asignacion.Fin = fin.AddDays(currentDateTime.Subtract(inicio).Days);
                                     
+
                                     asignacion.Serie = serie;
-                                    
+
                                     asignaciones.Add(asignacion);
 
-                                    
+
                                     //PeriodoTiempo dateRange = new PeriodoTiempo();
                                     //dateRange.Inicio = currentDateTime;
                                     //dateRange.Fin = fin.AddDays(currentDateTime.Subtract(inicio).Days);
@@ -149,7 +174,7 @@ namespace Control_Aulas_UAM
                                 if (radioButtonFecha.Checked)
                                 {
                                     if (currentDateTime.Date >= dateTimeInputFinRepeticiones.Value.Date)
-                                       finalizar = true;
+                                        finalizar = true;
                                 }
                                 else
                                 {
@@ -159,7 +184,8 @@ namespace Control_Aulas_UAM
                                 currentDateTime = currentDateTime.AddDays(1);
                             } while (!finalizar);
                         }
-                        else{
+                        else
+                        {
                             Asignacion asignacion = createAsignacion();
                             asignacion.Inicio = dateTimeInputInicio.Value;
                             asignacion.Fin = dateTimeInputFin.Value;
@@ -181,7 +207,8 @@ namespace Control_Aulas_UAM
             }
         }
 
-        private Asignacion createAsignacion() {
+        private Asignacion createAsignacion()
+        {
             Asignacion asignacion = null;
             if (comboBoxAsignacion.SelectedIndex == 0)
             {
@@ -194,9 +221,11 @@ namespace Control_Aulas_UAM
                 AsignacionVarios asignacionVarios = new AsignacionVarios();
                 asignacionVarios.TipoUso = (AulaTipoUso)comboBoxTipoUso.SelectedItem;
                 asignacionVarios.Observaciones = textBoxObservaciones.Text;
+                asignacionVarios.Cliente = (Cliente)comboBoxCliente.SelectedItem;
                 asignacion = asignacionVarios;
             }
             asignacion.Aula = (Aula)comboBoxAula.SelectedItem;
+            asignacion.Id_Usuario = usuario.Cod_Usua;
             return asignacion;
         }
 
@@ -222,7 +251,8 @@ namespace Control_Aulas_UAM
                 integerInputRepeticiones.Enabled = radioButtonRepeticiones.Checked;
                 dateTimeInputFinRepeticiones.Enabled = radioButtonFecha.Checked;
             }
-            else {
+            else
+            {
                 integerInputRepeticiones.Enabled = isChecked;
                 dateTimeInputFinRepeticiones.Enabled = isChecked;
             }
@@ -246,7 +276,7 @@ namespace Control_Aulas_UAM
 
         private void customValidatorDateValid_ValidateValue(object sender, DevComponents.DotNetBar.Validator.ValidateValueEventArgs e)
         {
-            bool isValid=false;
+            bool isValid = false;
             if (checkBoxRepetir.Checked && radioButtonFecha.Checked)
             {
                 if (dateTimeInputInicio.Value < dateTimeInputFinRepeticiones.Value)
@@ -285,7 +315,8 @@ namespace Control_Aulas_UAM
                     isValid = true;
                 }
             }
-            else {
+            else
+            {
                 isValid = true;
             }
             e.IsValid = isValid;
@@ -304,9 +335,10 @@ namespace Control_Aulas_UAM
         }
 
 
-        public List<Asignacion> Aceptar() { 
-            int tipoAsignacion=comboBoxAsignacion.SelectedIndex;
-            List<Asignacion> asignaciones=new List<Asignacion>();
+        public List<Asignacion> Aceptar()
+        {
+            int tipoAsignacion = comboBoxAsignacion.SelectedIndex;
+            List<Asignacion> asignaciones = new List<Asignacion>();
             foreach (PeriodoTiempo periodoTiempo in fechas)
             {
                 Asignacion asignacion = new Asignacion();
@@ -316,13 +348,14 @@ namespace Control_Aulas_UAM
                         {
                             AsignacionClase asignacionClase = new AsignacionClase();
                             asignacionClase.Grupo = (Grupo)comboBoxGrupo.SelectedItem;
-                            asignacion=asignacionClase;
+                            asignacion = asignacionClase;
                         } break;
                     case 1:
                         {
                             AsignacionVarios asignacionVarios = new AsignacionVarios();
                             asignacionVarios.TipoUso = (AulaTipoUso)comboBoxTipoUso.SelectedItem;
                             asignacionVarios.Observaciones = textBoxObservaciones.Text;
+                            asignacionVarios.Cliente = (Cliente)comboBoxCliente.SelectedItem;
                             asignacion = asignacionVarios;
                         } break;
                 }
@@ -335,7 +368,8 @@ namespace Control_Aulas_UAM
         }
 
 
-        public bool setInitialDates(DateTime inicio, DateTime fin) {
+        public bool setInitialDates(DateTime inicio, DateTime fin)
+        {
             bool done = false;
             if (fin < inicio)
             {
@@ -349,7 +383,6 @@ namespace Control_Aulas_UAM
         public void Nuevo()
         {
             Clear();
-            EnableToEdit(true);
         }
 
         public void Imprimir()
@@ -363,7 +396,7 @@ namespace Control_Aulas_UAM
             {
                 if (asignaciones.Count > 0)
                 {
-                    if(asignaciones.ToList<Asignacion>().FindAll(element => element.Aula == null).Count>0)
+                    if (asignaciones.ToList<Asignacion>().FindAll(element => element.Aula == null).Count > 0)
                     {
                         MessageBox.Show("Ha ocurrido un error:\nLas asignaciones deben de estar asignadas un aula.");
                     }
@@ -372,7 +405,8 @@ namespace Control_Aulas_UAM
                         try
                         {
                             List<Serie> insertedSeries = new List<Serie>();
-                            for (int i = 0; i < series.Count; i++) {
+                            for (int i = 0; i < series.Count; i++)
+                            {
                                 if (asignaciones.ToList().FindAll(element => element.SerieDescripcion == series[i].Descripcion).Count > 0)
                                 {
                                     Serie serie = series[i];
@@ -402,41 +436,17 @@ namespace Control_Aulas_UAM
                     MessageBox.Show("No hay ninguna asignacion que guardar");
                 }
             }
-            EnableToEdit(false);
             return guardado;
         }
 
         public void Cancelar()
         {
             Clear();
-            EnableToEdit(false);
         }
 
         public void Editar()
         {
             Clear();
-            EnableToEdit(true);
-        }
-
-        void EnableToEdit(Boolean enable) {
-            comboBoxAula.Enabled = enable;
-            dateTimeInputInicio.Enabled = enable;
-            dateTimeInputFin.Enabled = enable;
-            checkBoxRepetir.Enabled = enable;
-            if (!enable)
-            {
-                checkBoxRepetir.Checked = enable;
-                checkBoxAgruparSerie.Checked = enable;
-            }
-            buttonAdd.Enabled = enable;
-            buttonLimpiar.Enabled = enable;
-            checkBoxAgruparSerie.Enabled = enable;
-            comboBoxAsignatura.Enabled = enable;
-            comboBoxAsignacion.Enabled = enable;
-            comboBoxAsignatura.Enabled = enable;
-            comboBoxGrupo.Enabled = enable;
-            comboBoxTipoUso.Enabled = enable;
-            textBoxObservaciones.Enabled = enable;
         }
 
         public void Borrar()
@@ -482,7 +492,8 @@ namespace Control_Aulas_UAM
             asignarNombreSerie();
         }
 
-        private void asignarNombreSerie() {
+        private void asignarNombreSerie()
+        {
             if (checkBoxAgruparSerie.Checked)
             {
                 if (comboBoxAsignacion.SelectedIndex == 0)
@@ -494,7 +505,8 @@ namespace Control_Aulas_UAM
                     }
                 }
             }
-            else {
+            else
+            {
                 textBoxTituloSerie.Clear();
             }
         }
@@ -557,5 +569,81 @@ namespace Control_Aulas_UAM
             superValidator.Validate();
             handleGrupos();
         }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = (Cliente)comboBoxCliente.SelectedItem;
+            if (cliente == null)
+            {
+                cliente = new Cliente();
+                cliente.Nombre = comboBoxCliente.Text;
+            }
+            showFormCliente(cliente);
+        }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = new Cliente();
+            cliente.Nombre = comboBoxCliente.Text;
+            showFormCliente(cliente);
+        }
+
+        void showFormCliente(Cliente cliente)
+        {
+            FormCliente formCliente = new FormCliente();
+            if (cliente != null)
+            {
+                formCliente.Cliente = cliente;
+            }
+            DialogResult result = formCliente.ShowDialog();
+            if (result.Equals(DialogResult.OK))
+            {
+                cliente = formCliente.Cliente;
+                if (cliente != null)
+                {
+                    bool saved = false;
+                    if (cliente.Id > 0)
+                    {
+                        saved = conexion.actualizarCliente(cliente);
+                    }
+                    else
+                    {
+                        saved = conexion.insertCliente(ref cliente);
+                    }
+                    if (saved)
+                    {
+                        loadClientes();
+                        int index = clientes.FindIndex(element => element.Id == cliente.Id);
+                        if (index >= 0 && index < clientes.Count)
+                        {
+                            comboBoxCliente.SelectedIndex = index;
+                        }
+                    }
+                }
+            }
+            superValidator.Validate();
+        }
+
+        private void customValidator_Cliente_Valido_ValidateValue(object sender, DevComponents.DotNetBar.Validator.ValidateValueEventArgs e)
+        {
+            bool isValid = false;
+            Cliente cliente = (Cliente)comboBoxCliente.SelectedItem;
+            if (cliente != null)
+            {
+                isValid = true;
+            }
+            e.IsValid = isValid;
+        }
+
+        private void comboBoxCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            superValidator.Validate();
+        }
+
+        private void comboBoxCliente_Leave(object sender, EventArgs e)
+        {
+            superValidator.Validate();
+        }
+
     }
 }

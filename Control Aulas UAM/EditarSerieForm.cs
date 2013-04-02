@@ -20,6 +20,7 @@ namespace Control_Aulas_UAM
         public EditarSerieForm()
         {
             InitializeComponent();
+            radioButtonCurrentEvent.Select();
         }
 
         public Option getSelectedOption() { 
@@ -109,7 +110,8 @@ namespace Control_Aulas_UAM
             asignacionesSeleccionadas = new List<Asignacion>();
             for (int i = 0; i < dataGridViewAsignaciones.Rows.Count; i++)
             {
-                if ((bool)dataGridViewAsignaciones["ColumnCheck", i].Value)
+                Object value=dataGridViewAsignaciones["ColumnCheck", i].Value;
+                if (value!=null?(bool)value:false)
                 {
                     List<Asignacion> asignacionesFiltradas = (List<Asignacion>)dataGridViewAsignaciones.DataSource;
                     asignacionesSeleccionadas.Add(asignacionesFiltradas[i]);

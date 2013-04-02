@@ -140,6 +140,7 @@ namespace Control_Aulas_UAM
                 asignacionVariosControl.Fin = currentAsignacion.Fin;
                 asignacionVariosControl.Aula = currentAula;
                 asignacionVariosControl.TipoUso = asignacionVarios.TipoUso;
+                asignacionVariosControl.Cliente=asignacionVarios.Cliente;
                 asignacionVariosControl.Observaciones = asignacionVarios.Observaciones;
 
             }
@@ -280,6 +281,8 @@ namespace Control_Aulas_UAM
             asignacionClaseControl.Fin = fin;
             asignacionVariosControl.Inicio = inicio;
             asignacionVariosControl.Fin = fin;
+            asignacionVariosControl.Cliente = null;
+            asignacionVariosControl.Observaciones = null ;
         }
 
         private void comboBoxExTipoAsignacion_SelectedIndexChanged(object sender, EventArgs e)
@@ -323,6 +326,7 @@ namespace Control_Aulas_UAM
                             asignacionClase.Grupo = asignacionClaseControl.Grupo;
                             asignacionClase.Inicio = asignacionClaseControl.Inicio;
                             asignacionClase.Fin= asignacionClaseControl.Fin;
+                            asignacionClase.Id_Usuario = usuario.Cod_Usua;
                             currentAsignacion = asignacionClase;
                             flag = true;
                         }
@@ -345,6 +349,8 @@ namespace Control_Aulas_UAM
                             asignacionVarios.Observaciones = asignacionVariosControl.Observaciones;
                             asignacionVarios.Inicio = asignacionClaseControl.Inicio;
                             asignacionVarios.Fin = asignacionVariosControl.Fin;
+                            asignacionVarios.Cliente = asignacionVariosControl.Cliente;
+                            asignacionVarios.Id_Usuario = usuario.Cod_Usua;
                             currentAsignacion = asignacionVarios;
                             flag=true;
                         }
@@ -409,6 +415,7 @@ namespace Control_Aulas_UAM
                                                 {
                                                     ((AsignacionVarios)asignacion).TipoUso = ((AsignacionVarios)currentAsignacion).TipoUso;
                                                     ((AsignacionVarios)asignacion).Observaciones = ((AsignacionVarios)currentAsignacion).Observaciones;
+                                                    ((AsignacionVarios)asignacion).Cliente = ((AsignacionVarios)currentAsignacion).Cliente;
                                                 }
                                                 conexion.actualizarAsignacion(asignacion);
                                                 calendarControl.updateAsignacion(asignacion);
@@ -503,6 +510,7 @@ namespace Control_Aulas_UAM
             try
             {
                 AsignacionMultipleForm asignacionMultipleForm = new AsignacionMultipleForm();
+                asignacionMultipleForm.setUsuario(usuario);
                 if (inicio != null && fin != null)
                 {
                     asignacionMultipleForm.setInitialDates(inicio.Value, fin.Value);
