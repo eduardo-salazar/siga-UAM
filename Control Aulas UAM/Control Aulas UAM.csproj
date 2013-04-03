@@ -249,6 +249,7 @@
     <Compile Include="Clases\Db\Grupo.cs" />
     <Compile Include="Clases\Db\Periodo.cs" />
     <Compile Include="Clases\Db\Serie.cs" />
+    <Compile Include="Clases\Email.cs" />
     <Compile Include="Clases\PeriodoTiempo.cs" />
     <Compile Include="ControlNotificar.cs">
       <SubType>UserControl</SubType>

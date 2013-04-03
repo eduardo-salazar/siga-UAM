@@ -15,6 +15,7 @@ namespace Control_Aulas_UAM
     {
         private Aula aula;
         private Usuario usuario;
+        private Usuario destino;
         private DateTime inicio, fin;
 
         //Notificaciones
@@ -88,6 +89,7 @@ namespace Control_Aulas_UAM
 
             Alerta alerta = new Alerta();
             alerta.IdAula = id_aula;
+            alerta.Aula = aula;
             alerta.Descripcion = descripcion;
             alerta.FechaEvento = fecha_evento;
             alerta.FechaRecordatorio = fecha_recordatorio;
@@ -95,16 +97,19 @@ namespace Control_Aulas_UAM
             alerta.IdAlertaEstado = id_alerta_estado;
             alerta.UsuarioEmisor = usuario_emisor;
             alerta.UsuarioDestinatario = usuario_destinatario;
+            alerta.DescripcionEstado = this.cbAlertaEstado.Text;
             try
             {
                 db.insertAlerta(alerta);
+                destino = this.usuarios.Find(o=>o.Cod_Usua==usuario_destinatario);
+                Email.send(usuario,destino, alerta);
+                return true;
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
                 return false;
             }
-            return true;
 
         }
 
@@ -112,8 +117,8 @@ namespace Control_Aulas_UAM
         {
             if (guardarNotificacion())
             {
-                MessageBox.Show("Se ha registrado su notificaciones. Correo registrado de respuesta: " + this.usuario.Email);
-                this.Dispose();
+                MessageBox.Show("Se ha registrado su notificaciones. Se ha enviado una email con la informacón de la reservación al correo "+destino.Email+" con copia a su correo " + this.usuario.Email);
+                 this.Dispose();
             }
         }
 
