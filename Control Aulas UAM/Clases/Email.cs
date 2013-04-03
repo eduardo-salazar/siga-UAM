@@ -19,10 +19,10 @@ namespace Control_Aulas_UAM.Clases
             //mensaje
             try
             {
-                m.From = new MailAddress("espacios@uam.net.ni", "Reservacion-EspaciosUAM");
+                m.From = new MailAddress("espacios@uam.net.ni", "EspaciosUAM");
                 m.To.Add(new MailAddress(destino.Email, destino.Nombre));
                 m.CC.Add(new MailAddress(origen.Email,origen.Nombre));
-                m.Subject = "Reservación de Espacio";
+                m.Subject = "EspaciosUAM-Reservación aula "+alerta.Aula.Referencia;
                 m.IsBodyHtml = true;
                 m.Body = "Reservación";
 

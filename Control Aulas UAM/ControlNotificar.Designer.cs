@@ -148,7 +148,7 @@
             this.dateTimeRecordatorio.ShowUpDown = true;
             this.dateTimeRecordatorio.Size = new System.Drawing.Size(191, 20);
             this.dateTimeRecordatorio.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateTimeRecordatorio.TabIndex = 34;
+            this.dateTimeRecordatorio.TabIndex = 32;
             this.superValidator1.SetValidator1(this.dateTimeRecordatorio, this.compareValidator1);
             this.dateTimeRecordatorio.TextChanged += new System.EventHandler(this.dateTimeRecordatorio_TextChanged);
             this.dateTimeRecordatorio.Click += new System.EventHandler(this.dateTimeRecordatorio_Click);
@@ -293,7 +293,7 @@
             this.NotObservacion.Multiline = true;
             this.NotObservacion.Name = "NotObservacion";
             this.NotObservacion.Size = new System.Drawing.Size(191, 84);
-            this.NotObservacion.TabIndex = 27;
+            this.NotObservacion.TabIndex = 34;
             // 
             // NotDescripcion
             // 
@@ -310,7 +310,7 @@
             this.NotDescripcion.Multiline = true;
             this.NotDescripcion.Name = "NotDescripcion";
             this.NotDescripcion.Size = new System.Drawing.Size(191, 84);
-            this.NotDescripcion.TabIndex = 24;
+            this.NotDescripcion.TabIndex = 33;
             // 
             // labelX1
             // 
@@ -339,7 +339,7 @@
             this.cbAlertaEstado.Name = "cbAlertaEstado";
             this.cbAlertaEstado.Size = new System.Drawing.Size(131, 23);
             this.cbAlertaEstado.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbAlertaEstado.TabIndex = 26;
+            this.cbAlertaEstado.TabIndex = 35;
             // 
             // rectangleShape1
             // 
